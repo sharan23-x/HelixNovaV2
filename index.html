@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#080B18" />
+  <meta name="description" content="HelixNova — an interactive genomics and DNA sequence exploration platform." />
+  <title>HelixNova — Genomics Intelligence Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="ambient ambient-one"></div><div class="ambient ambient-two"></div>
+  <div class="background-grid" aria-hidden="true"></div>
+  <header class="topbar">
+    <a class="brand" href="#overview" aria-label="HelixNova home"><span class="brand-mark">H</span><span>helix<span class="brand-light">nova</span></span></a>
+    <nav class="main-nav" aria-label="Main navigation">
+      <a class="active" href="#overview">Overview</a><a href="#workspace">Sequence Lab</a><a href="#dataset">Dataset</a><a href="#insights">Insights</a>
+    </nav>
+    <div class="top-actions"><span class="status-dot"></span><span class="status-label">SYSTEM ONLINE</span><button class="icon-button" id="themeButton" title="Toggle appearance" aria-label="Toggle appearance">◐</button></div>
+  </header>
+
+  <main class="shell">
+    <section class="hero" id="overview">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="eyebrow-line"></span> GENOMICS STUDIO / HELIXNOVA 2.0</div>
+        <h1>Decode the language<br>of <span class="gradient-text">life.</span></h1>
+        <p class="hero-description">Explore DNA patterns through feature extraction, machine learning and interactive genomic analysis.</p>
+        <div class="hero-buttons"><a class="primary-button" href="#workspace">Open DNA lab <span>↗</span></a><a class="text-button" href="#how-it-works">Explore the workflow <span>↓</span></a></div>
+        <div class="hero-meta"><span><i class="mini-dot"></i> EDUCATIONAL ML SIMULATION</span><span>·</span><span>DNA CLASSIFICATION</span></div>
+      </div>
+      <div class="hero-visual" aria-label="Decorative DNA visualization">
+        <div class="orbit orbit-a"></div><div class="orbit orbit-b"></div>
+        <div class="dna-core"><div class="dna-strand strand-a"></div><div class="dna-strand strand-b"></div><div class="dna-rungs"></div><div class="core-label">A T G C</div></div>
+        <div class="float-card float-top"><span class="float-icon">⌁</span><div><small>SEQUENCE STATUS</small><strong>Ready to analyze</strong></div><span class="live-pill">LIVE</span></div>
+        <div class="float-card float-bottom"><div class="tiny-bars"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div><small>GC CONTENT</small><strong>Pattern discovery</strong></div></div>
+        <div class="visual-caption">GENOMIC SIGNALS · VISUALIZED</div>
+      </div>
+    </section>
+
+    <section class="stats-grid" aria-label="Project summary">
+      <article class="stat-card"><div class="stat-top"><span>TRAINING SEQUENCES</span><span class="stat-symbol">▤</span></div><strong id="sequenceCount">04</strong><small>Known labelled samples</small></article>
+      <article class="stat-card"><div class="stat-top"><span>DNA FEATURES</span><span class="stat-symbol">⌗</span></div><strong>06</strong><small>Nucleotide + GC profile</small></article>
+      <article class="stat-card"><div class="stat-top"><span>CLASSIFICATION GROUPS</span><span class="stat-symbol">◈</span></div><strong>02</strong><small>Group A and Group B</small></article>
+      <article class="stat-card"><div class="stat-top"><span>MODEL</span><span class="stat-symbol">⌘</span></div><strong class="model-stat">TREE</strong><small>Decision tree demonstration</small></article>
+    </section>
+
+    <section class="section-block" id="workspace">
+      <div class="section-heading"><div><div class="eyebrow">INTERACTIVE WORKSPACE</div><h2>Genome workspace</h2><p>Enter a DNA sequence to extract its features and explore a group prediction.</p></div><span class="section-index">01 / ANALYZE</span></div>
+      <div class="lab-grid">
+        <article class="panel sequence-panel">
+          <div class="panel-heading"><div><span class="panel-kicker">INPUT TERMINAL</span><h3>Sequence console</h3></div><span class="panel-icon">⌁</span></div>
+          <label for="sequenceInput" class="field-label">DNA SEQUENCE <span>ACGT ONLY</span></label>
+          <textarea id="sequenceInput" spellcheck="false" maxlength="5000">ATGCGCGATC</textarea>
+          <div class="input-footer"><span id="charCount">10 BASES</span><span id="inputStatus" class="valid-status">● VALID SEQUENCE</span></div>
+          <div class="sample-row"><span>TRY SAMPLE</span><button class="sample-chip" data-sequence="ATGCGATC">S1</button><button class="sample-chip" data-sequence="ATGCGTAC">S2</button><button class="sample-chip" data-sequence="GCGCGTAT">S3</button><button class="sample-chip" data-sequence="GCGCGCGC">S4</button><button class="sample-chip" data-sequence="ATGCGCGATC">Unknown</button></div>
+          <div class="button-row"><button id="analyzeButton" class="primary-button full-button">Analyze sequence <span>→</span></button><button id="clearButton" class="secondary-button">Clear</button></div>
+          <p class="micro-note">This is an educational demonstration. Avoid entering personal or sensitive data.</p>
+        </article>
+        <article class="panel results-panel">
+          <div class="panel-heading"><div><span class="panel-kicker">FEATURE EXTRACTION</span><h3>Sequence fingerprint</h3></div><span class="result-badge" id="resultBadge">AWAITING INPUT</span></div>
+          <div class="feature-grid">
+            <div class="feature-cell"><span>A · ADENINE</span><strong id="featureA">—</strong><div class="feature-track"><i id="barA"></i></div></div>
+            <div class="feature-cell"><span>T · THYMINE</span><strong id="featureT">—</strong><div class="feature-track"><i id="barT"></i></div></div>
+            <div class="feature-cell"><span>G · GUANINE</span><strong id="featureG">—</strong><div class="feature-track"><i id="barG"></i></div></div>
+            <div class="feature-cell"><span>C · CYTOSINE</span><strong id="featureC">—</strong><div class="feature-track"><i id="barC"></i></div></div>
+          </div>
+          <div class="feature-bottom"><div><span>SEQUENCE LENGTH</span><strong id="featureLength">— <small>bp</small></strong></div><div><span>GC CONTENT</span><strong id="featureGC">— <small>%</small></strong></div></div>
+          <div class="composition-wrap"><div class="composition-title"><span>BASE COMPOSITION</span><span id="compositionText">Waiting for sequence</span></div><div class="composition-bar"><i id="compA"></i><i id="compT"></i><i id="compG"></i><i id="compC"></i></div><div class="legend"><span><i class="dot-a"></i>A</span><span><i class="dot-t"></i>T</span><span><i class="dot-g"></i>G</span><span><i class="dot-c"></i>C</span></div></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section-block" id="insights">
+      <div class="section-heading"><div><div class="eyebrow">MODEL OUTPUT</div><h2>Pattern insights</h2><p>A simple transparent rule-based decision tree demonstration trained on the supplied samples.</p></div><span class="section-index">02 / PREDICT</span></div>
+      <div class="insight-grid">
+        <article class="panel prediction-panel"><div class="panel-heading"><div><span class="panel-kicker">PREDICTION RESULT</span><h3>Model classification</h3></div><span class="panel-icon">✳</span></div><div class="prediction-result"><div class="prediction-orb" id="predictionOrb">?</div><div><span class="prediction-label">PREDICTED GROUP</span><strong id="predictionGroup">—</strong><p id="predictionDescription">Analyze a valid DNA sequence to see the model output.</p></div></div><div class="prediction-details"><div><span>GC CONTENT RULE</span><strong id="ruleOutput">Not evaluated</strong></div><div><span>MODEL TYPE</span><strong>Decision tree demo</strong></div></div><div class="notice"><span>ⓘ</span><p>Predictions are based on only four tiny training examples. They are not medical, diagnostic or research-grade results.</p></div></article>
+        <article class="panel chart-panel"><div class="panel-heading"><div><span class="panel-kicker">COMPOSITION PROFILE</span><h3>Nucleotide distribution</h3></div><span class="panel-icon">▥</span></div><div class="chart-area"><div class="chart-y-labels"><span>100%</span><span>75%</span><span>50%</span><span>25%</span><span>0%</span></div><div class="chart-content"><div class="chart-gridlines"><i></i><i></i><i></i><i></i><i></i></div><div class="chart-bars"><div class="chart-column"><div class="chart-bar bar-a" id="chartA"></div><span>A</span></div><div class="chart-column"><div class="chart-bar bar-t" id="chartT"></div><span>T</span></div><div class="chart-column"><div class="chart-bar bar-g" id="chartG"></div><span>G</span></div><div class="chart-column"><div class="chart-bar bar-c" id="chartC"></div><span>C</span></div></div></div></div><div class="chart-footnote"><span><i class="dot-a"></i>A</span><span><i class="dot-t"></i>T</span><span><i class="dot-g"></i>G</span><span><i class="dot-c"></i>C</span><small>Share of total bases</small></div></article>
+      </div>
+    </section>
+
+    <section class="section-block" id="dataset">
+      <div class="section-heading"><div><div class="eyebrow">REFERENCE DATA</div><h2>Reference library</h2><p>The four labelled DNA sequences supplied in the assignment.</p></div><span class="section-index">03 / DATA</span></div>
+      <article class="panel dataset-panel"><div class="table-toolbar"><div><span class="panel-kicker">SAMPLE LIBRARY</span><h3>Known sequences</h3></div><span class="dataset-count">4 RECORDS</span></div><div class="table-scroll"><table><thead><tr><th>SEQUENCE ID</th><th>DNA SEQUENCE</th><th>LENGTH</th><th>GC CONTENT</th><th>LABEL</th><th></th></tr></thead><tbody id="datasetBody"></tbody></table></div><div class="dataset-footer"><span><i class="mini-dot"></i> Source: illustrative educational examples</span><button id="downloadCsv" class="download-button">↓ Export feature table (.csv)</button></div></article>
+    </section>
+
+    <section class="section-block" id="how-it-works">
+      <div class="section-heading"><div><div class="eyebrow">THE PROCESS</div><h2>The analysis pipeline</h2><p>A simplified view of the computational biology workflow.</p></div><span class="section-index">04 / WORKFLOW</span></div>
+      <div class="workflow-grid"><article class="workflow-card"><span class="workflow-number">01</span><div class="workflow-icon">⌁</div><h3>Input DNA</h3><p>Provide a sequence made from the four DNA bases: A, T, G and C.</p><span class="workflow-tag">RAW SEQUENCE</span></article><article class="workflow-card"><span class="workflow-number">02</span><div class="workflow-icon">▦</div><h3>Extract features</h3><p>Calculate nucleotide counts, sequence length and GC content.</p><span class="workflow-tag">NUMERICAL DATA</span></article><article class="workflow-card"><span class="workflow-number">03</span><div class="workflow-icon">⌘</div><h3>Classify pattern</h3><p>Use a simple model demonstration to assign a predicted group.</p><span class="workflow-tag">ML CONCEPT</span></article><article class="workflow-card"><span class="workflow-number">04</span><div class="workflow-icon">◉</div><h3>Interpret result</h3><p>Review the output while considering the limits of a tiny dataset.</p><span class="workflow-tag">BIOLOGICAL INSIGHT</span></article></div>
+    </section>
+
+    <section class="section-block discussion-section">
+      <div class="section-heading"><div><div class="eyebrow">LEARN & INTERPRET</div><h2>Research notes</h2><p>Important context to include when explaining your project.</p></div><span class="section-index">05 / LEARN</span></div>
+      <div class="notes-grid"><article class="panel note-card"><span class="note-icon">⌬</span><h3>Why GC content?</h3><p>GC content is the percentage of bases in a DNA sequence that are guanine (G) or cytosine (C). It is a useful basic sequence-composition feature, but it does not reveal the full biological meaning of a sequence.</p></article><article class="panel note-card"><span class="note-icon">⚑</span><h3>Model limitation</h3><p>Four training sequences are far too few to establish reliable generalization. A model can appear accurate on its training examples and still perform poorly on new biological data.</p></article><article class="panel note-card"><span class="note-icon">✧</span><h3>Genomics application</h3><p>Machine learning can help researchers explore genomic patterns and prioritize sequences for further study. Any meaningful biological or clinical conclusion requires validation by qualified experts.</p></article></div>
+    </section>
+
+    <section class="cta-banner"><div><span class="eyebrow">KEEP EXPLORING</span><h2>Curiosity is the first step<br>to discovery.</h2><p>Change the input sequence and see how its numerical fingerprint changes.</p></div><a href="#workspace" class="primary-button">Run another analysis <span>↗</span></a><div class="cta-decoration">A·T·G·C</div></section>
+
+    <footer class="footer"><a class="brand" href="#overview"><span class="brand-mark">H</span><span>helix<span class="brand-light">nova</span></span></a><p>HelixNova · An educational computational biology experience</p><span>NOT FOR CLINICAL USE</span></footer>
+  </main>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>
